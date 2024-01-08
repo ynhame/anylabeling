@@ -1,4 +1,4 @@
-[tool.black]
+[tool.ruff]
 line-length = 79
 #include = '\.pyi?$'
 exclude = '''
@@ -15,7 +15,31 @@ exclude = '''
 )/
 '''
 
+[tool.poetry]
+name = "anylabeling"
+version = "0.1.0"
+description = "attempt to update from pyqt5 to pyqt6"
+authors = ["ynhame <brunoguedes.nave@gmail.com>"]
+license = "GPL-3.0 license"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+PyQt6 = "^6.6.1"
+imgviz = "^1.7.5"
+termcolor = "^2.4.0"
+PyYAML = "^6.0.1"
+onnx = "^1.15.0"
+onnxruntime = "^1.16.3"
+darkdetect = "^0.8.0"
+opencv-contrib-python-headless = "^4.9.0.80"
+natsort = "^8.4.0"
+qimage2ndarray = "^1.10.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.11"
+
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 

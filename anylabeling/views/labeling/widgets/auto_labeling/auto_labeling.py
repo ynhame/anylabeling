@@ -1,9 +1,9 @@
 import os
 
 import darkdetect
-from PyQt5 import uic
-from PyQt5.QtCore import pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QWidget, QFileDialog
+from PyQt6 import uic
+from PyQt6.QtCore import pyqtSignal, pyqtSlot
+from PyQt6.QtWidgets import QWidget, QFileDialog
 
 from anylabeling.services.auto_labeling.model_manager import ModelManager
 from anylabeling.services.auto_labeling.types import AutoLabelingMode
@@ -22,7 +22,7 @@ class AutoLabelingWidget(QWidget):
         super().__init__()
         self.parent = parent
         current_dir = os.path.dirname(__file__)
-        uic.loadUi(os.path.join(current_dir, "auto_labeling.ui"), self)
+        uic.load_ui.loadUi(os.path.join(current_dir, "auto_labeling.ui"), self)
 
         self.model_manager = ModelManager()
         self.model_manager.model_configs_changed.connect(
@@ -180,7 +180,7 @@ class AutoLabelingWidget(QWidget):
     def set_auto_labeling_mode(self, edit_mode, shape_type=None):
         """Set auto labeling mode"""
         if edit_mode is None:
-            self.auto_labeling_mode = AutoLabelingMode.NONE
+            self.auto_labeling_mode = AutoLabelingMode.NONE  #TODO
         else:
             self.auto_labeling_mode = AutoLabelingMode(edit_mode, shape_type)
         self.auto_labeling_mode_changed.emit(self.auto_labeling_mode)
@@ -248,9 +248,9 @@ class AutoLabelingWidget(QWidget):
             self.model_manager.unload_model()
             # Open file dialog to select "config.yaml" file for model
             file_dialog = QFileDialog(self)
-            file_dialog.setFileMode(QFileDialog.ExistingFile)
+            file_dialog.setFileMode(QFileDialog.FileMode.ExistingFile)
             file_dialog.setNameFilter("Config file (*.yaml)")
-            if file_dialog.exec_():
+            if file_dialog.exec():
                 config_file = file_dialog.selectedFiles()[0]
                 # Disable combobox while loading model
                 if config_path:

@@ -1,6 +1,6 @@
 """Defines Toaster widget"""
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class QToaster(QtWidgets.QFrame):
@@ -32,17 +32,17 @@ class QToaster(QtWidgets.QFrame):
         self.setAutoFillBackground(True)
         self.setFrameShape(self.Box)
 
-        self.timer = QtCore.QTimer(singleShot=True, timeout=self.hide)
+        self.timer = QtCore.QTimer(singleShot=True, timeout=self.hide)  #TODO
 
         if self.parent():
-            self.opacity_effect = QtWidgets.QGraphicsOpacityEffect(opacity=0)
+            self.opacity_effect = QtWidgets.QGraphicsOpacityEffect(opacity=0)  #TODO
             self.setGraphicsEffect(self.opacity_effect)
             self.opacity_ani = QtCore.QPropertyAnimation(
                 self.opacity_effect, b"opacity"
             )
             # we have a parent, install an eventFilter so that when it's resized
             # the notification will be correctly moved to the right corner
-            self.parent().installEventFilter(self)
+            self.parent().installEventFilter(self)  #TODO
         else:
             # there's no parent, use the window opacity property, assuming that
             # the window manager supports it; if it doesn't, this won'd do

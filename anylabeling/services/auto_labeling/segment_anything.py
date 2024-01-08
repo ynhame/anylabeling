@@ -4,9 +4,9 @@ import traceback
 
 import cv2
 import numpy as np
-from PyQt5 import QtCore
-from PyQt5.QtCore import QThread
-from PyQt5.QtCore import QCoreApplication
+from PyQt6 import QtCore
+from PyQt6.QtCore import QThread
+from PyQt6.QtCore import QCoreApplication
 
 from anylabeling.utils import GenericWorker
 from anylabeling.views.labeling.shape import Shape
@@ -162,10 +162,10 @@ class SegmentAnything(Model):
                     point[1] = int(point[1])
                     shape.add_point(QtCore.QPointF(point[0], point[1]))
                 shape.shape_type = "polygon"
-                shape.closed = True
+                shape.closed = True  #TODO
                 shape.fill_color = "#000000"
                 shape.line_color = "#000000"
-                shape.line_width = 1
+                shape.line_width = 1  #TODO
                 shape.label = "AUTOLABEL_OBJECT"
                 shape.selected = False
                 shapes.append(shape)
@@ -195,10 +195,10 @@ class SegmentAnything(Model):
             shape.add_point(QtCore.QPointF(x_min, y_min))
             shape.add_point(QtCore.QPointF(x_max, y_max))
             shape.shape_type = "rectangle"
-            shape.closed = True
+            shape.closed = True  #TODO
             shape.fill_color = "#000000"
             shape.line_color = "#000000"
-            shape.line_width = 1
+            shape.line_width = 1  #TODO
             shape.label = "AUTOLABEL_OBJECT"
             shape.selected = False
             shapes.append(shape)

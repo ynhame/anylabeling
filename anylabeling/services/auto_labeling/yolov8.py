@@ -3,8 +3,8 @@ import os
 
 import cv2
 import numpy as np
-from PyQt5 import QtCore
-from PyQt5.QtCore import QCoreApplication
+from PyQt6 import QtCore
+from PyQt6.QtCore import QCoreApplication
 
 from anylabeling.app_info import __preferred_device__
 from anylabeling.views.labeling.shape import Shape
@@ -58,12 +58,12 @@ class YOLOv8(Model):
         Pre-process the input image before feeding it to the network.
         """
         # Create a 4D blob from a frame.
-        blob = cv2.dnn.blobFromImage(
+        blob = cv2.dnn.blobFromImage(  #TODO
             input_image,
             1 / 255,
             (self.config["input_width"], self.config["input_height"]),
             [0, 0, 0],
-            1,
+            1,  #TODO
             crop=False,
         )
 

@@ -11,8 +11,8 @@ from threading import Lock
 import urllib.request
 
 import yaml
-from PyQt5.QtCore import QObject, QThread, pyqtSignal, pyqtSlot
-from PyQt5.QtCore import QCoreApplication
+from PyQt6.QtCore import QObject, QThread, pyqtSignal, pyqtSlot
+from PyQt6.QtCore import QCoreApplication
 
 from anylabeling.configs import auto_labeling as auto_labeling_configs
 from anylabeling.services.auto_labeling.types import AutoLabelingResult
